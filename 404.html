@@ -7,7 +7,7 @@
     <title>Blucrow.Foodtracker</title>
     <base href="/" id="baseHref" />
     <script>
-        function updateBaseHref() {
+        window.onload = function () {
             const currentUrl = window.location.href;
             const baseElement = document.querySelector('base');
 
@@ -19,7 +19,6 @@
                 console.log('Base href reset to /');
             }
         }
-        window.onload = updateBaseHref;
     </script>
     <link rel="stylesheet" href="css/app.css" />
     <!--<link href="Blucrow.Foodtracker.styles.css" rel="stylesheet" />-->
