@@ -1,51 +1,47 @@
+---
 name: DeployBlazorWebAssembly
 on:
   push:
-    branches: [ "main" ] 
-
+    branches:
+      - main
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 9.0.x
-        
-    - name: Publish .NET Core Project
-      run: dotnet publish "src/Blucrow.Foodtracker/Blucrow.Foodtracker.csproj" -c Release -o release --nologo
-    
-    - name: Find and replace base href
-        run: |
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 9.0.x
+      - name: Publish .NET Core Project
+        run: dotnet publish "src/Blucrow.Foodtracker/Blucrow.Foodtracker.csproj" -c
+          Release -o release --nologo
+      - name: Find and replace base href
+        run: >
           # Find index.html.  GNU find is assumed.
+
           HTML_FILE=$(find . -name "index.html" -print -quit)
+
           if [ -z "$HTML_FILE" ]; then
             echo "Error: index.html not found."
             exit 1
           fi
+
           echo "Found index.html at $HTML_FILE"
 
-          # Use sed to replace the base href.
-          sed -i 's#<base href="/">#<base href="/Simplefoodtracker/">#g' "$HTML_FILE"
-          echo "Replaced base href in $HTML_FILE"
- 
-    #- name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
-    #  run: sed -i 's/<base href="\/" \/>/<base href="\/Simplefoodtracker\/" \/>/g' release/wwwroot/index.html
-    
- 
-    - name: copy index.html to 404.html
-      run: cp release/wwwroot/index.html release/wwwroot/404.html
 
-    # (Allow files and folders starting with an underscore)
-    - name: Add .nojekyll file
-      run: touch release/wwwroot/.nojekyll
-      
-    - name: Commit wwwroot to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@3.7.1
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: release/wwwroot
+          # Use sed to replace the base href.
+
+          sed -i 's#<base href="/">#<base href="/Simplefoodtracker/">#g' "$HTML_FILE"
+
+          echo "Replaced base href in $HTML_FILE"
+      - name: copy index.html to 404.html
+        run: cp release/wwwroot/index.html release/wwwroot/404.html
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
+      - name: Commit wwwroot to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: release/wwwroot
