@@ -13,32 +13,15 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 9.0.x
+
       - name: Publish .NET Core Project
         run: dotnet publish "src/Blucrow.Foodtracker/Blucrow.Foodtracker.csproj" -c
-          Release -o release --nologo
-      - name: Find and replace base href
-        run: >
-          # Find index.html.  GNU find is assumed.
+          Release -o release --nologo -p:GHPages=true
 
-          HTML_FILE=$(find . -name "index.html" -print -quit)
-
-          if [ -z "$HTML_FILE" ]; then
-            echo "Error: index.html not found."
-            exit 1
-          fi
-
-          echo "Found index.html at $HTML_FILE"
-
-
-          # Use sed to replace the base href.
-
-          sed -i 's#<base href="/" \/>#<base href="/Simplefoodtracker/" \/>#g' "$HTML_FILE"
-
-          echo "Replaced base href in $HTML_FILE"
-      - name: copy index.html to 404.html
-        run: cp release/wwwroot/index.html release/wwwroot/404.html
-      - name: Add .nojekyll file
-        run: touch release/wwwroot/.nojekyll
+      #- name: copy index.html to 404.html
+      #  run: cp release/wwwroot/index.html release/wwwroot/404.html
+      #- name: Add .nojekyll file
+      #  run: touch release/wwwroot/.nojekyll
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
