@@ -27,10 +27,11 @@
     </div>
     <Routes @rendermode="InteractiveWebAssembly" />
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
-    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script src="js/IndexedDbStorageAccessor.js"></script>
     
     <script>navigator.serviceWorker.register('service-worker.js');</script>
+    <script src="brotliloader.min.js" type="module"></script>
 </body>
 
 </html>

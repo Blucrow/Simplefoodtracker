@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Blucrow.Foodtracker",
   "resources": {
-    "hash": "sha256-kjAxJW6dNPdyZeye93mVJhEVSHgjeFR3CEKJVnnZmhQ=",
+    "hash": "sha256-mSXOR83p+IZacKDT6gAkWbKIYBvcgCxtp2kEt8i9g6M=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.xtrbyyvsjw.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Forms.pl7ta3gmle.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
@@ -46,7 +46,7 @@
       "System.Web.HttpUtility.zxgxju611c.wasm": "System.Web.HttpUtility.wasm",
       "System.ezrw3d5kw2.wasm": "System.wasm",
       "System.Private.CoreLib.2yv4d3lqvb.wasm": "System.Private.CoreLib.wasm",
-      "Blucrow.Foodtracker.yxcis18jtg.wasm": "Blucrow.Foodtracker.wasm",
+      "Blucrow.Foodtracker.qh20jba5fj.wasm": "Blucrow.Foodtracker.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.native.uhsveqo9bs.js": "dotnet.native.js",
       "dotnet.native.swgexbmoy7.wasm": "dotnet.native.wasm",
@@ -115,7 +115,7 @@
       "System.Text.RegularExpressions.xm2gsqk2m5.wasm": "sha256-p4r+hs4jgtmFZsgNMgfZB1XAyK1YyqVqjw6N3KiyRZI=",
       "System.Web.HttpUtility.zxgxju611c.wasm": "sha256-+WAYv+toll+1VB+R+I8jZI4oluamkvX5kU9mMiNftN8=",
       "System.ezrw3d5kw2.wasm": "sha256-ViNRvhyxlTugIlqJHamw/HwbXlg/YWcrANmxuTM0tfg=",
-      "Blucrow.Foodtracker.yxcis18jtg.wasm": "sha256-+m02GtcB+VbqYMyQHXKm0h03vYVkefYoiUSCHZiOjnk="
+      "Blucrow.Foodtracker.qh20jba5fj.wasm": "sha256-YhRreUGxOIf8nYTTcKRQ8bvTbgyphRoO/uPKN7iAjNI="
     }
   },
   "cacheBootResources": true,
