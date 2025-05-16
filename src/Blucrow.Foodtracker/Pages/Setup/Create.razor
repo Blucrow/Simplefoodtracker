@@ -45,7 +45,7 @@
 	{
 		var personalInfo = await DbAccess.LoadData<PersonalInfo>("info");
 		if (personalInfo != null)
-			Nav.NavigateTo(Nav.ToBaseRelativePath("/"));
+			Nav.NavigateTo("/");
 		else
 		{
 			Info = new PersonalInfo();
