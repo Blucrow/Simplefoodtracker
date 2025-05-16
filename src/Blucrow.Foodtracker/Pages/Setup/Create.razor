@@ -1,0 +1,50 @@
+﻿@page "/create"
+<div class="d-flex justify-center align-items-center" style="padding-top:5%">
+	<MudStack AlignItems="AlignItems.Center">
+		<MudProgressLinear Value="@_progress" Min="0" Max="4" />
+		@switch (_progress)
+		{
+			case 0:
+				<CreateUser Info="@Info" OnNext="@NextStep" />
+				break;
+			case 1:
+				<CreateAgeGender Info="@Info" OnNext="@NextStep" />
+				break;
+			case 2:
+				<CreateWeightAndHeight Info="@Info" OnNext="@NextStep" />
+				break;
+		}
+
+	</MudStack>
+</div>
+
+
+
+@code {
+
+	private int _progress = 0;
+
+	[Inject]
+	public IndexedDbAccessor DbAccess { get; set; } = null!;
+
+	[Inject]
+	public NavigationManager Nav { get; set; } = null!;
+
+	private PersonalInfo? Info = new PersonalInfo();
+
+	protected override async Task OnInitializedAsync()
+	{
+		var personalInfo = await DbAccess.LoadData<PersonalInfo>("info");
+		if (personalInfo != null)
+			Nav.NavigateTo("/");
+		else
+		{
+			Info = new PersonalInfo();
+		}
+	}
+
+	private async Task NextStep()
+	{
+		_progress++;
+	}
+}

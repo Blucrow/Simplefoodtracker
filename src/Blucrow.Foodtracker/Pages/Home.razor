@@ -1,7 +1,24 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Foodtracker</PageTitle>
 
-<h1>Hello, world!</h1>
 
-hald die schnauze karsten
+@code {
+	[Inject]
+	public IndexedDbAccessor DbAccess { get; set; } = null!;
+	[Inject]
+	public NavigationManager Nav { get; set; } = null!;
+
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await DbAccess.DeleteData("info");
+		var personalInfo = await DbAccess.LoadData<PersonalInfo>("info");
+		if (personalInfo == null)
+			Nav.NavigateTo("/create");
+		else
+			StateHasChanged();
+	}
+
+
+}

@@ -1,0 +1,54 @@
+﻿<MudCard>
+	<MudCardHeader>
+		<CardHeaderContent>
+			<MudText Typo="Typo.h6">What is your Age and Gender?</MudText>
+		</CardHeaderContent>
+	</MudCardHeader>
+	<MudCardContent>
+		<MudTextField Variant="Variant.Outlined" T="int"
+					  InputType="InputType.Number" Label="Age"
+					  Error="@(_errorText.Length > 0)" ErrorText="@_errorText"
+					  Immediate="true" @bind-Value="@Info.Age"
+					  @onkeypress="@OnEnter" />
+		<MudRadioGroup @bind-Value="@Info.Male">
+			<MudRadio Color="Color.Info" Value="true">Male</MudRadio>
+			<MudRadio Color="Color.Error" Value="false">Female</MudRadio>
+		</MudRadioGroup>
+	</MudCardContent>
+	<div class="d-flex justify-center">
+		<MudCardActions>
+			<MudButton Variant="Variant.Filled" OnClick="@Validate"
+					   Color="Color.Primary" EndIcon="@Icons.Material.Filled.ArrowRight">Next</MudButton>
+		</MudCardActions>
+	</div>
+</MudCard>
+
+@code {
+	[Parameter]
+	public PersonalInfo Info { get; set; } = null!;
+
+	[Parameter]
+	public EventCallback OnNext { get; set; }
+
+	private string _errorText = "";
+
+	private async Task Validate()
+	{
+		if (Info.Age <= 0)
+		{
+			_errorText = "Invalid Age";
+			StateHasChanged();
+		}
+		else
+			await OnNext.InvokeAsync();
+
+	}
+	private async Task OnEnter(KeyboardEventArgs e)
+	{
+		if (e is null || e.Code == "Enter" || e.Code == "NumpadEnter")
+		{
+			await Validate();
+		}
+	}
+
+}

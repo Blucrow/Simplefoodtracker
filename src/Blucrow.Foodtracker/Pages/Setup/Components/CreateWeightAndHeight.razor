@@ -1,0 +1,67 @@
+﻿<MudCard>
+	<MudCardHeader>
+		<CardHeaderContent>
+			<MudText Typo="Typo.h6">What is your Height and Weight?</MudText>
+		</CardHeaderContent>
+	</MudCardHeader>
+	<MudCardContent>
+		<MudTextField Variant="Variant.Outlined" T="double"
+					  InputType="InputType.Number" Label="Height"
+					  Error="@(_errorText.Length > 0)" ErrorText="@_errorText"
+					  Immediate="true" @bind-Value="@Info.HeightCm"
+					  AdornmentText="cm"
+					  Adornment="Adornment.End"
+					  @onkeypress="@OnEnter"/>
+		<MudTextField Variant="Variant.Outlined" T="double"
+					  InputType="InputType.Number" Label="Weight"
+					  Error="@(_errorTextWeight.Length > 0)" ErrorText="@_errorTextWeight"
+					  Immediate="true" @bind-Value="@Info.WeightKg"
+					  AdornmentText="Kg"
+					  Adornment="Adornment.End"
+					  @onkeypress="@OnEnter"/>
+	</MudCardContent>
+	<div class="d-flex justify-center">
+		<MudCardActions>
+			<MudButton Variant="Variant.Filled" OnClick="@Validate"
+					   Color="Color.Primary" EndIcon="@Icons.Material.Filled.ArrowRight">Next</MudButton>
+		</MudCardActions>
+	</div>
+</MudCard>
+
+@code {
+	[Parameter]
+	public PersonalInfo Info { get; set; } = null!;
+
+	[Parameter]
+	public EventCallback OnNext { get; set; }
+
+	private string _errorText = "";
+
+	private string _errorTextWeight = "";
+
+	private async Task Validate()
+	{
+		if (Info.HeightCm <= 10)
+		{
+			_errorText = "Invalid Height";
+			StateHasChanged();
+		}
+		if (Info.WeightKg <= 10)
+		{
+			_errorTextWeight = "Invalid Weight";
+			StateHasChanged();
+		}
+		else
+			await OnNext.InvokeAsync();
+
+	}
+
+	private async Task OnEnter(KeyboardEventArgs e)
+	{
+		if (e is null || e.Code == "Enter" || e.Code == "NumpadEnter")
+		{
+			await Validate();
+		}
+	}
+
+}

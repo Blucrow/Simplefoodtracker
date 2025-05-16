@@ -1,0 +1,55 @@
+﻿<MudCard>
+	<MudCardHeader>
+		<CardHeaderContent>
+			<MudText Typo="Typo.h6">Welcome</MudText>
+			<MudText Typo="Typo.subtitle1">To get you started please setup your Information</MudText>
+		</CardHeaderContent>
+	</MudCardHeader>
+	<MudCardContent>
+		<MudTextField Error="@(_errorText.Length > 0)"
+					  Immediate="true"
+					  @onkeypress="@OnEnter"
+					  ErrorText="@_errorText" InputType="InputType.Text"
+					  @bind-Value="@Info.Username" Label="Username"
+					  Variant="Variant.Outlined"></MudTextField>
+	</MudCardContent>
+	<div class="d-flex justify-center">
+		<MudCardActions>
+			<MudButton Variant="Variant.Filled" OnClick="@Validate"
+					   Color="Color.Primary" EndIcon="@Icons.Material.Filled.ArrowRight">Next</MudButton>
+		</MudCardActions>
+	</div>
+</MudCard>
+
+@code {
+	[Parameter]
+	public PersonalInfo Info { get; set; } = null!;
+
+	[Parameter]
+	public EventCallback OnNext { get; set; }
+
+	private string _errorText = "";
+
+	private async Task Validate()
+	{
+		if (Info.Username == null || Info.Username.Length <= 0)
+		{
+			_errorText = "Invalid Username";
+			StateHasChanged();
+		}
+		else
+		{
+			await OnNext.InvokeAsync();
+		}
+	}
+
+	private async Task OnEnter(KeyboardEventArgs e)
+	{
+		if (e.Code == "Enter" || e.Code == "NumpadEnter")
+		{
+			await Validate();
+		}
+	}
+
+
+}
