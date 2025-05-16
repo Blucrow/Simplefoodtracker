@@ -1,16 +1,27 @@
 ﻿@page "/"
 
 <PageTitle>Foodtracker</PageTitle>
-<div class="d-flex justify-center align-items-center" style="padding-top:5%">
+@if (_initialized)
+{
+	<div class="d-flex justify-center align-items-center" style="padding-top:2%">
+		<MudStack>
+			<DonutConsumedToday />
+			<ActionMenu />
+		</MudStack>
+		
+	</div>
+}
 
-</div>
+
+
 
 @code {
 	[Inject]
 	public IndexedDbAccessor DbAccess { get; set; } = null!;
 	[Inject]
-	public NavigationManager Nav { get; set; } = null!;
+	public CustomNavigationService Nav { get; set; } = null!;
 
+	private bool _initialized = false;
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
@@ -18,7 +29,16 @@
 		if (personalInfo == null)
 			Nav.NavigateTo("./create");
 		else
+		{
+			_initialized = true;
+			var consumed = await DbAccess.LoadData<List<ProductsConsumed>>("consumed");
+			if (consumed == null)
+			{
+				await DbAccess.SaveData<List<ProductsConsumed>>("consumed", new List<ProductsConsumed>());
+			}
 			StateHasChanged();
+		}
+	
 	}
 
 

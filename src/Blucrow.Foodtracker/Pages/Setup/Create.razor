@@ -37,7 +37,7 @@
 	public IndexedDbAccessor DbAccess { get; set; } = null!;
 
 	[Inject]
-	public NavigationManager Nav { get; set; } = null!;
+	public CustomNavigationService Nav { get; set; } = null!;
 
 	private PersonalInfo? Info = new PersonalInfo();
 

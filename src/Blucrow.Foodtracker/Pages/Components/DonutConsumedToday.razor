@@ -1,0 +1,34 @@
+﻿<MudPaper Class="pa-4">
+    <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@data" InputLabels="@labels">
+        <CustomGraphics>
+            <text class="donut-inner-text" x="50%" y="35%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="Helvetica" font-size="20">Calories</text>
+            <text class="donut-inner-text" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="Helvetica" font-size="20">@kcal.ToString() / @_info?.CalorieGoal.ToString()</text>
+        </CustomGraphics>
+    </MudChart>
+</MudPaper>
+
+@code {
+    [Inject]
+    public IndexedDbAccessor? DbAccess { get; set; }
+
+    public double[] data = { 0, 0, 0, 0 };
+    public string[] labels = { "Proteins", "Sugar", "Carbohydrates", "Fat" };
+    private int kcal = 0;
+
+    private PersonalInfo? _info = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var consumed = await DbAccess!.LoadData<List<ProductsConsumed>>("consumed");
+        _info = await DbAccess!.LoadData<PersonalInfo>("info");
+        var relevant = consumed!.Where(x => x.Date == DateService.Today());
+        foreach (var r in relevant)
+        {
+            kcal += Convert.ToInt32(r.Product.Consumed!.EnergyKcal);
+            data[0] += Convert.ToDouble(r.Product.Consumed.Proteins);
+            data[1] += Convert.ToDouble(r.Product.Consumed.Sugars);
+            data[2] += Convert.ToDouble(r.Product.Consumed.Carbohydrates);
+            data[3] += Convert.ToDouble(r.Product.Consumed.Fat);
+        }
+    }
+}
