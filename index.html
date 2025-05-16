@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blucrow.Foodtracker</title>
-    <base href="/" />
+    <base href="/" id="baseHref" />
     <link rel="stylesheet" href="css/app.css" />
     <!--<link href="Blucrow.Foodtracker.styles.css" rel="stylesheet" />-->
     <link href="manifest.webmanifest" rel="manifest" />
@@ -14,6 +14,14 @@
     <HeadOutlet @rendermode="InteractiveWebAssembly" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+    <script>
+        const baseHrefElement = document.getElementById('baseHref');
+        const pathSegments = window.location.pathname.split('/').filter(segment => segment !== '');
+
+        if (pathSegments.length > 0 && pathSegments[0] === 'Simplefoodtracker') {
+            baseHrefElement.setAttribute('href', '/Simplefoodtracker/');
+        }
+    </script>
 </head>
 
 <body>
@@ -28,6 +36,7 @@
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="js/IndexedDbStorageAccessor.js"></script>
+    
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 
