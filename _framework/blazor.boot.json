@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Blucrow.Foodtracker",
   "resources": {
-    "hash": "sha256-iqBMUybmafhnBaSnSMSw4yXqYyzyhxyHJunhrgvigJQ=",
+    "hash": "sha256-asvluCKx4Q1E3NUXkhBW7x7UlLpreLqQZjn4wZ0f4lM=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.xtrbyyvsjw.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Forms.pl7ta3gmle.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
@@ -29,15 +29,15 @@
       "System.ComponentModel.TypeConverter.d6f1g9bet5.wasm": "System.ComponentModel.TypeConverter.wasm",
       "System.ComponentModel.fmqia21jk3.wasm": "System.ComponentModel.wasm",
       "System.Console.7eea0igwos.wasm": "System.Console.wasm",
-      "System.Diagnostics.DiagnosticSource.bds6p6ewyu.wasm": "System.Diagnostics.DiagnosticSource.wasm",
+      "System.Diagnostics.DiagnosticSource.ir8jrjjwlf.wasm": "System.Diagnostics.DiagnosticSource.wasm",
       "System.IO.Pipelines.3p3f5vckx6.wasm": "System.IO.Pipelines.wasm",
       "System.Linq.Expressions.kp0hg2g0b8.wasm": "System.Linq.Expressions.wasm",
       "System.Linq.td32na24rw.wasm": "System.Linq.wasm",
       "System.Memory.z4lrm545w5.wasm": "System.Memory.wasm",
-      "System.Net.Http.kqtz0nq7lu.wasm": "System.Net.Http.wasm",
+      "System.Net.Http.0cfveho5ii.wasm": "System.Net.Http.wasm",
       "System.Net.Primitives.6p59uqgnlv.wasm": "System.Net.Primitives.wasm",
       "System.ObjectModel.fjm8uc0elu.wasm": "System.ObjectModel.wasm",
-      "System.Private.Uri.vc6os7t4dx.wasm": "System.Private.Uri.wasm",
+      "System.Private.Uri.8j72qbx6ih.wasm": "System.Private.Uri.wasm",
       "System.Runtime.InteropServices.JavaScript.5pcrya9j00.wasm": "System.Runtime.InteropServices.JavaScript.wasm",
       "System.Runtime.na1r0v5n46.wasm": "System.Runtime.wasm",
       "System.Text.Encodings.Web.n7nth9auq4.wasm": "System.Text.Encodings.Web.wasm",
@@ -45,24 +45,24 @@
       "System.Text.RegularExpressions.xm2gsqk2m5.wasm": "System.Text.RegularExpressions.wasm",
       "System.Web.HttpUtility.zxgxju611c.wasm": "System.Web.HttpUtility.wasm",
       "System.ezrw3d5kw2.wasm": "System.wasm",
-      "System.Private.CoreLib.jafpg0xdbp.wasm": "System.Private.CoreLib.wasm",
-      "Blucrow.Foodtracker.pqwkpgp4sb.wasm": "Blucrow.Foodtracker.wasm",
-      "dotnet.native.w2rpj55hda.js": "dotnet.native.js",
-      "dotnet.native.8ompuf1r14.wasm": "dotnet.native.wasm",
+      "System.Private.CoreLib.2yv4d3lqvb.wasm": "System.Private.CoreLib.wasm",
+      "Blucrow.Foodtracker.xiqw8g3zao.wasm": "Blucrow.Foodtracker.wasm",
       "dotnet.js": "dotnet.js",
+      "dotnet.native.uhsveqo9bs.js": "dotnet.native.js",
+      "dotnet.native.swgexbmoy7.wasm": "dotnet.native.wasm",
       "dotnet.runtime.5nhp1wfg9b.js": "dotnet.runtime.js",
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat"
     },
     "jsModuleNative": {
-      "dotnet.native.w2rpj55hda.js": "sha256-WAyBnp/ca2sD2A70gST0aSgEoXepkt9A2NLM0YHaHBc="
+      "dotnet.native.uhsveqo9bs.js": "sha256-/ifJokfQvXKw1hEziCkYR9SOJIKSdGG/UKw5gbLWrj0="
     },
     "jsModuleRuntime": {
       "dotnet.runtime.5nhp1wfg9b.js": "sha256-kTZbe5ESp04VMT22TnjRmFj88VbtEcohZfCm4og/IDw="
     },
     "wasmNative": {
-      "dotnet.native.8ompuf1r14.wasm": "sha256-CIljEPmuxhwpK6L9zokb/3/u5ppCKkM0Lv0X9Ov0dl0="
+      "dotnet.native.swgexbmoy7.wasm": "sha256-HHqsNtcX76Ik012KVAobmCLooIZ2znhTFCqfijzEdi0="
     },
     "icu": {
       "icudt_CJK.tjcz0u77k5.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -71,7 +71,7 @@
     },
     "coreAssembly": {
       "System.Runtime.InteropServices.JavaScript.5pcrya9j00.wasm": "sha256-92zUoi9qwW2rZalWHIYTUNdUv+uUJLg6ZLS4Aj0eqHk=",
-      "System.Private.CoreLib.jafpg0xdbp.wasm": "sha256-q3l11hzozpsFG0aei2CY3/VyyiHzhDXnHgKi0bt52Ts="
+      "System.Private.CoreLib.2yv4d3lqvb.wasm": "sha256-RpzlJebCfn7Wuk1rnVawWjqxuhEYvkb7Bi/nJORPkJk="
     },
     "assembly": {
       "Microsoft.AspNetCore.Components.xtrbyyvsjw.wasm": "sha256-pXseeaUTXJIqaSQZYbedQyAUuYYhB1D2IHCnX8PhbQM=",
@@ -100,22 +100,22 @@
       "System.ComponentModel.TypeConverter.d6f1g9bet5.wasm": "sha256-6/imjLNsLXSkY9ycM3okm3qamzvBHg86eZepREkjv7c=",
       "System.ComponentModel.fmqia21jk3.wasm": "sha256-R7ngh95V/nsqhrCHW2rk39aNArmqdfwpXE4RTI+u4Kk=",
       "System.Console.7eea0igwos.wasm": "sha256-oRB4yaCBQMOFgGMQt62BxUvd9w0XySyquX4lAO20KVw=",
-      "System.Diagnostics.DiagnosticSource.bds6p6ewyu.wasm": "sha256-4bnlO6XiYz+e/K/WP2JAzRWaEc1oDm+/FedNs3BLZ/s=",
+      "System.Diagnostics.DiagnosticSource.ir8jrjjwlf.wasm": "sha256-HgpjAU2dn484VMx9J/hODOE05jXofPGLgJQPzx3noec=",
       "System.IO.Pipelines.3p3f5vckx6.wasm": "sha256-d4Fv2UP7j+pqOrhljw06Xjdf1UB0VVgcWQAZYM+e2Ak=",
       "System.Linq.Expressions.kp0hg2g0b8.wasm": "sha256-KIo4PAinHr33o/vDqVOEqrOkhv8uZj1LaVTMsDooR94=",
       "System.Linq.td32na24rw.wasm": "sha256-X4P0Fyf7ZpyJY5LXOVyuJe3LABaSXmBv2zX/d63jv2Y=",
       "System.Memory.z4lrm545w5.wasm": "sha256-wy2EU9j5x+FTuhiwP8UqFcKkiwVBxA9lq45vLjqQo6w=",
-      "System.Net.Http.kqtz0nq7lu.wasm": "sha256-tGJZP1hx3JWy340iturff2voKQCkHjmau6NmSELiwBg=",
+      "System.Net.Http.0cfveho5ii.wasm": "sha256-oC7TfPbUiTmq8QIGsI7YPiI7wRi0vSakxvVs9sZcp6I=",
       "System.Net.Primitives.6p59uqgnlv.wasm": "sha256-5jS6wHg5BUfY2FckWbpdn75sOjWbxL6YA0gKEgWpUq8=",
       "System.ObjectModel.fjm8uc0elu.wasm": "sha256-5c1U4CNNrpvP/GiP0JMUsKzUy+nTJxL/oavjEMANvQA=",
-      "System.Private.Uri.vc6os7t4dx.wasm": "sha256-0eH3nO2Rnsjx3G320VCpvF5yj2GqdrHnVLAiodT1HDI=",
+      "System.Private.Uri.8j72qbx6ih.wasm": "sha256-pIgtcTeSYiQBPAO/RWabXICN33tBfG8XCemnOH/usGI=",
       "System.Runtime.na1r0v5n46.wasm": "sha256-TytchDUzdJEyJJEkqNZ1PyoU8gaW7vmvv+xsp3kF25Y=",
       "System.Text.Encodings.Web.n7nth9auq4.wasm": "sha256-PVCrhDn4h1OgqMGUhEs25nlp1YW7mMfPoEgZxltnMoo=",
       "System.Text.Json.9m1sp8uvag.wasm": "sha256-MXDh3G756sB82dJdv9rLgygPAc7SuEGNy4FeNi2pt9A=",
       "System.Text.RegularExpressions.xm2gsqk2m5.wasm": "sha256-p4r+hs4jgtmFZsgNMgfZB1XAyK1YyqVqjw6N3KiyRZI=",
       "System.Web.HttpUtility.zxgxju611c.wasm": "sha256-+WAYv+toll+1VB+R+I8jZI4oluamkvX5kU9mMiNftN8=",
       "System.ezrw3d5kw2.wasm": "sha256-ViNRvhyxlTugIlqJHamw/HwbXlg/YWcrANmxuTM0tfg=",
-      "Blucrow.Foodtracker.pqwkpgp4sb.wasm": "sha256-wWujSfk89z1aITYfWDu7nurSQfKGcCgbxRi3IpAKMEI="
+      "Blucrow.Foodtracker.xiqw8g3zao.wasm": "sha256-SYYYEdmGYPZANIPPOGjr3y10OOkDVkikRVp9JPsAj9M="
     }
   },
   "cacheBootResources": true,
