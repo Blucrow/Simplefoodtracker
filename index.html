@@ -7,9 +7,11 @@
     <title>Blucrow.Foodtracker</title>
     <base href="/Simplefoodtracker/" />
     <link rel="stylesheet" href="css/app.css" />
-    <!-- If you add any scoped CSS files, uncomment the following to load them
-    <link href="Blucrow.Foodtracker.styles.css" rel="stylesheet" /> -->
+    <!--<link href="Blucrow.Foodtracker.styles.css" rel="stylesheet" />-->
     <link href="manifest.webmanifest" rel="manifest" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+    <HeadOutlet @rendermode="InteractiveWebAssembly" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
 </head>
@@ -22,13 +24,10 @@
         </svg>
         <div class="loading-progress-text"></div>
     </div>
-
-    <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="." class="reload">Reload</a>
-        <span class="dismiss">🗙</span>
-    </div>
+    <Routes @rendermode="InteractiveWebAssembly" />
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script src="js/IndexedDbStorageAccessor.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 
