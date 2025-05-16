@@ -1,0 +1,73 @@
+﻿<MudCard>
+	<MudCardHeader>
+		<CardHeaderContent>
+			<MudText Typo="Typo.h6">Set your calories</MudText>
+			<MudText Typo="Typo.subtitle2">You can change any of the settings later</MudText>
+		</CardHeaderContent>
+	</MudCardHeader>
+	<MudCardContent>
+		<MudText Typo="Typo.subtitle1">Your estimated daily calorie needs:</MudText>
+		<MudTextField Error="@(_errorText.Length > 0)"
+					  ReadOnly="true"
+					  Disabled="false"
+					  Immediate="true"
+					  @onkeypress="@OnEnter"
+					  ErrorText="@_errorText" InputType="InputType.Number"
+					  @bind-Value="@Info.MaxCalories"
+
+					  Variant="Variant.Filled"></MudTextField>
+		<MudText Typo="Typo.subtitle1">Set your calories deficit/surplus:</MudText>
+		<MudTextField Error="@(_errorTextGoal.Length > 0)"
+					  Style="padding-top:3px"
+					  Immediate="true"
+					  @onkeypress="@OnEnter"
+					  ErrorText="@_errorTextGoal" InputType="InputType.Number"
+					  @bind-Value="@Info.CalorieGoal"
+					  Variant="Variant.Outlined"></MudTextField>
+	</MudCardContent>
+	<div class="d-flex justify-center">
+		<MudCardActions>
+			<MudButton Variant="Variant.Filled" OnClick="@Validate"
+					   Color="Color.Primary" EndIcon="@Icons.Material.Filled.ArrowRight">Finish</MudButton>
+		</MudCardActions>
+	</div>
+</MudCard>
+
+@code {
+	[Parameter]
+	public PersonalInfo Info { get; set; } = null!;
+
+	[Parameter]
+	public EventCallback OnNext { get; set; }
+
+	private string _errorText = "";
+	private string _errorTextGoal = "";
+
+	private async Task Validate()
+	{
+		if (Info.CalorieGoal < 10)
+		{
+			_errorTextGoal = "Invalid Calories";
+			StateHasChanged();
+		}
+		else if (Info.MaxCalories < 0)
+		{
+			_errorText = "Invalid Calories";
+			StateHasChanged();
+		}
+		else
+		{
+			await OnNext.InvokeAsync();
+		}
+	}
+
+	private async Task OnEnter(KeyboardEventArgs e)
+	{
+		if (e.Code == "Enter" || e.Code == "NumpadEnter")
+		{
+			await Validate();
+		}
+	}
+
+
+}

@@ -1,7 +1,9 @@
 ﻿@page "/"
 
 <PageTitle>Foodtracker</PageTitle>
+<div class="d-flex justify-center align-items-center" style="padding-top:5%">
 
+</div>
 
 @code {
 	[Inject]
@@ -12,7 +14,6 @@
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
-		await DbAccess.DeleteData("info");
 		var personalInfo = await DbAccess.LoadData<PersonalInfo>("info");
 		if (personalInfo == null)
 			Nav.NavigateTo("/create");
