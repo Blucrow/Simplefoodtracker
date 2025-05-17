@@ -19,9 +19,20 @@
 	<MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
 </MudOverlay>
 @code {
+	[Inject]
+	public CustomNavigationService Nav { get; set; } = null!;
+	[Inject]
+	public IndexedDbAccessor DbAccess { get; set; } = null!;
 
 	private bool _loading = false;
 	private List<Product>? _products = new List<Product>();
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		var personalInfo = await DbAccess.LoadData<PersonalInfo>("info");
+		if (personalInfo == null)
+			Nav.NavigateTo("./create");
+	}
 	private async Task PerformSearch(string searchTerm)
 	{
 		_products?.Clear();

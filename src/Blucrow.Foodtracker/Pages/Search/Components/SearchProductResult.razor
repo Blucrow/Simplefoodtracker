@@ -2,20 +2,24 @@
 	<MudCardHeader>
 		<CardHeaderContent>
 			<MudText Typo="Typo.h6">@Product.Name</MudText>
-			<MudText Typo="Typo.subtitle1">@Product.Brand</MudText>
+			<MudTextField T="float" Adornment="Adornment.End" AdornmentText="g" InputType="InputType.Number" Label="grams" @bind-Value="@_grams" Immediate="true" />
 		</CardHeaderContent>
 	</MudCardHeader>
 	<MudCardContent>
-		<MudDataGrid Filterable="false" SortMode="SortMode.None" Items="@Product.GetNutrionsAsData()">
+		<MudDataGrid style="max-width:300px; width:300px;" Filterable="false" SortMode="SortMode.None" Items="@Product.GetNutrionsAsData()">
 			<Columns>
-				<PropertyColumn Property="x => x.NutritionType" Title="Nutrition"/>
-				<PropertyColumn Property="x => x.Per100g" Title="Amount per 100g"/>
+				<PropertyColumn Property="x => x.NutritionType" Title="Nutrition" />
+				<TemplateColumn>
+					<CellTemplate>
+						@((context.Item.Per100g * (_grams / (float)100))!.Value.ToString("n1"))
+					</CellTemplate>
+				</TemplateColumn>
 			</Columns>
 		</MudDataGrid>
 	</MudCardContent>
 	<div class="d-flex justify-center">
 		<MudCardActions>
-			
+			<MudButton Color="Color.Secondary" Variant="Variant.Filled" OnClick="@AddItem">Add Product</MudButton>
 		</MudCardActions>
 	</div>
 </MudCard>
@@ -24,5 +28,35 @@
 	[Parameter]
 	public Product Product { get; set; } = null!;
 
+	[Inject]
+	public ISnackbar Snackbar { get; set; } = null!;
+
+	[Inject]
+	public IndexedDbAccessor DbAccess { get; set; } = null!;
+
+	private float _grams = 100;
+
+	private async Task AddItem()
+	{
+		var productConsumed = new ProductsConsumed()
+			{
+				Date = DateService.Today(),
+				Product = Product
+			};
+		productConsumed.Product.Consumed = new Consumed
+			{
+				Carbohydrates = Product.Nutritions!.Carbohydrates100g * (_grams / (float)100),
+				EnergyKcal = Product.Nutritions!.EnergyKcal100g * (_grams / (float)100),
+				Sugars = Product.Nutritions!.Sugars100g * (_grams / (float)100),
+				Fat = Product.Nutritions!.Fat * (_grams / (float)100),
+				Proteins = Product.Nutritions!.Carbohydrates100g * (_grams / (float)100),
+				Grams = _grams
+			};
+
+		var consumed = await DbAccess.LoadData<List<ProductsConsumed>>("consumed");
+		consumed!.Add(productConsumed);
+		await DbAccess.SaveData("consumed",consumed);
+		Snackbar.Add("Product added", Severity.Success);
+	}
 
 }
