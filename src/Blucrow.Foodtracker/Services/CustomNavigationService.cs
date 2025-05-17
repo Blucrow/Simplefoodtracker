@@ -14,7 +14,7 @@ namespace Blucrow.Foodtracker.Services
 
         public void NavigateTo(string uri, bool forceLoad = false, bool replace = false)
         {
-            _navigationManager.NavigateTo("." + uri, forceLoad, replace);
+            _navigationManager.NavigateTo(uri, forceLoad, replace);
         }
 
         // You can also expose other methods from NavigationManager if needed
