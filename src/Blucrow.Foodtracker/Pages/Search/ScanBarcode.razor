@@ -1,6 +1,8 @@
 ﻿@page "/scan"
 @inject ISnackbar Snackbar
 
+
+
 <div class="d-flex justify-center align-items-center" style="padding-top:2%">
 	<MudPaper MaxWidth="600px">
 		<MudStack Spacing="2" AlignItems="AlignItems.Center" Justify="Justify.Center">
@@ -12,12 +14,14 @@
 			<div id="reader" style="width: 300px;"></div>
 			@if (_scanEnabled)
 			{
-				<BarcodeReader ScanResult="@OnBarcodeScanned" ScanBtnTitle="" ResetBtnTitle="" CloseBtnTitle=""/>
-				@* <video id="video" style="width: 100%; max-width: 400px;"></video> *@
-				@* <BlazorBarcodeScanner.ZXing.JS.BarcodeReader StartCameraAutomatically="true"
+				<div class="mt-2 text-center">
+					<div id="reader" class="mx-auto mb-2" style="width:300px">
+					</div>
+				</div>
+				<BlazorBarcodeScanner.ZXing.JS.BarcodeReader StartCameraAutomatically="true"
 				VideoWidth="600"
 				VideoHeight="300"
-				OnBarcodeReceived="@LocalReceivedBarcodeText"
+				OnBarcodeReceived="@OnBarcodeScanned"
 				ShowReset="false"
 				ShowVideoDeviceList="false"
 				ShowToggleTorch="false"
@@ -25,7 +29,8 @@
 				ShowStart="false"
 				ShowStop="false"
 				LabelVideoDeviceListText=""
-				Title="" /> *@
+				@ref="@_scanner"
+				Title="" />
 			}
 			@if(Product != null)
 			{
@@ -39,35 +44,36 @@
 	<MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
 </MudOverlay>
 @code {
-
+	private BarcodeReader _scanner;
 	private bool _scanEnabled = false;
 	private bool _loading = false;
 	private bool _disableButton = false;
 	private Product? Product = null;
-
 	private async Task StartScan()
 	{
 		_disableButton = true;
 		_scanEnabled = true;
 		StateHasChanged();
+
 	}
 
 	private string LocalBarcodeText = "";
 
-	[JSInvokable]
-	public async Task OnBarcodeScanned(string barcode)
+	public async Task OnBarcodeScanned(BarcodeReceivedEventArgs args)
 	{
 		_loading = true;
 		_scanEnabled = false;
 		StateHasChanged();
-		Product = await Foodservice.GetProductByBarcode(barcode);
+		Product = await Foodservice.GetProductByBarcode(args.BarcodeText);
 		_loading = false;
 		_disableButton = false;
 		if(Product == null)
 		{
+			_scanner.BarcodeText = "";
 			Snackbar.Add("Product not found. Please add it manually.", Severity.Error);
 		}
 		StateHasChanged();
 	}
+
 
 }
