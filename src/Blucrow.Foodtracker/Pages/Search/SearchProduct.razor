@@ -1,0 +1,36 @@
+﻿@page "/search"
+
+<div class="d-flex justify-center align-items-center" style="padding-top:2%">
+	<MudStack AlignItems="AlignItems.Center" Justify="Justify.Center">
+		<SearchProductInput OnSearch="@PerformSearch" />
+		@if (_products != null && _products!.Any())
+		{
+			@foreach (var p in _products!)
+			{
+				<SearchProductResult Product="@p" />
+			}
+		}
+	</MudStack>
+	
+</div>
+
+
+<MudOverlay AutoClose="false" Visible="@_loading" DarkBackground>
+	<MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
+</MudOverlay>
+@code {
+
+	private bool _loading = false;
+	private List<Product>? _products = new List<Product>();
+	private async Task PerformSearch(string searchTerm)
+	{
+		_products?.Clear();
+		_loading = true;
+		StateHasChanged();
+		_products = await Foodservice.SearchProductAsync(searchTerm);
+		_loading = false;
+		StateHasChanged();
+
+	}
+
+}

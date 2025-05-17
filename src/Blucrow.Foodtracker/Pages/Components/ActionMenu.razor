@@ -1,11 +1,40 @@
-﻿<MudPaper Class="pa-4">
-	<MudStack Row>
-		<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" />
+﻿<MudPaper Class="pa-4 d-flex justify-center" Style="width:400px">
+	<MudStack Row AlignItems="AlignItems.Center">
+		<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="@Add"/>
 		<MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Bookmark" Label="Add Recipe" />
 		<MudFab Color="Color.Tertiary" StartIcon="@Icons.Material.Filled.Settings" />
 	</MudStack>
 </MudPaper>
 
+<MudOverlay @bind-Visible="_overlayVisible" DarkBackground AutoClose="true">
+	<MudPaper Class="pa-4">
+		<MudStack Spacing="2">
+			<MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="@Search">Search a product</MudButton>
+			<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@Scan">Scan a barcode</MudButton>
+			<MudButton Variant="Variant.Filled" Color="Color.Tertiary">Add a custom product</MudButton>
+		</MudStack>
+	</MudPaper>
+</MudOverlay>
 @code {
 
+	[Inject]
+	public CustomNavigationService Nav { get; set; } = null!;
+
+	private bool _overlayVisible = false;
+
+	private void Search()
+	{
+		Nav.NavigateTo("/search");
+	}
+
+	private void Scan()
+	{
+		Nav.NavigateTo("/scan");
+	}
+
+	private void Add()
+	{
+		_overlayVisible = true;
+		StateHasChanged();
+	}
 }

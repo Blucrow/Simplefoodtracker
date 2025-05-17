@@ -18,17 +18,17 @@
 
 <body>
     <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
+        <div style="position: fixed; height: 100%; width: 100%; left: 0; top: 0; text-align: center; background-color: #1a1a27; justify-content: center; color: white">
+            <h1>Foodtracker</h1>
+            The application is loading...
+        </div>
     </div>
     <Routes @rendermode="InteractiveWebAssembly" />
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="js/IndexedDbStorageAccessor.js"></script>
-    
+    <script src="_content/BlazorBarcodeScanner.ZXing.JS/zxingjs.index.min.js"></script>
+    <script src="_content/BlazorBarcodeScanner.ZXing.JS/BlazorBarcodeScanner.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 

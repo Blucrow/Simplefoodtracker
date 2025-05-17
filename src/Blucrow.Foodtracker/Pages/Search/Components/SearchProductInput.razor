@@ -1,0 +1,50 @@
+﻿<MudCard Style="max-width: 520px; width: 520px;">
+	<MudCardHeader>
+		<CardHeaderContent>
+			<MudText Typo="Typo.h6">Search a Product</MudText>
+			<MudText Typo="Typo.subtitle1">Product names or brands</MudText>
+		</CardHeaderContent>
+	</MudCardHeader>
+	<MudCardContent>
+		<MudTextField Error="@(_errorText.Length > 0)"
+					  Immediate="true"
+					  @onkeypress="@OnEnter"
+					  ErrorText="@_errorText" InputType="InputType.Text"
+					  @bind-Value="@_searchTerm"
+					  Variant="Variant.Outlined"></MudTextField>
+	</MudCardContent>
+	<div class="d-flex justify-center">
+		<MudCardActions>
+			<MudButton Variant="Variant.Filled" OnClick="@Validate"
+					   Color="Color.Primary" EndIcon="@Icons.Material.Filled.Search">Search</MudButton>
+		</MudCardActions>
+	</div>
+</MudCard>
+@code {
+	[Parameter]
+	public EventCallback<string> OnSearch { get; set; }
+
+	private string _searchTerm = "";
+
+	private string _errorText = "";
+
+	private async Task Validate()
+	{
+		if (_searchTerm != null && _searchTerm.Length > 2)
+		{
+			await OnSearch.InvokeAsync(_searchTerm);
+		}
+		else
+		{
+			_errorText = "Invalid Search";
+		}
+	}
+
+	private async Task OnEnter(KeyboardEventArgs e)
+	{
+		if (e.Code == "Enter" || e.Code == "NumpadEnter")
+		{
+			await Validate();
+		}
+	}
+}

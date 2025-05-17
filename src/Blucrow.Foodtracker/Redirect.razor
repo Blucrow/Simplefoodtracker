@@ -1,0 +1,10 @@
+﻿<h3>NotFound</h3>
+
+@code {
+	[Inject]
+	public CustomNavigationService? Nav { get; set; }
+	protected override void OnAfterRender(bool firstRender)
+	{
+		Nav?.NavigateTo("/");
+	}
+}

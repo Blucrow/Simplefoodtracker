@@ -7,5 +7,6 @@
         public float? Fat { get; set; }
         public float? Proteins { get; set; }
         public float? Sugars { get; set; }
+        public float? Grams { get; set; }
     }
 }

@@ -1,0 +1,68 @@
+﻿@page "/scan"
+@inject ISnackbar Snackbar
+<div class="d-flex justify-center align-items-center" style="padding-top:2%">
+	<MudPaper MaxWidth="600px">
+		<MudStack Spacing="2" AlignItems="AlignItems.Center" Justify="Justify.Center">
+			<MudButton Variant="Variant.Filled"
+			Color="Color.Secondary"
+			EndIcon="@Icons.Material.Filled.Scanner"
+			Disabled="@_disableButton"
+			OnClick="@StartScan">Scan Barcode</MudButton>
+			@if (_scanEnabled)
+			{
+				<BlazorBarcodeScanner.ZXing.JS.BarcodeReader StartCameraAutomatically="true"
+				VideoWidth="600"
+				VideoHeight="300"
+				OnBarcodeReceived="@LocalReceivedBarcodeText"
+				ShowReset="false"
+				ShowVideoDeviceList="false"
+				ShowToggleTorch="false"
+				ShowResult="false"
+				ShowStart="false"
+				ShowStop="false"
+				LabelVideoDeviceListText=""
+				Title="" />
+			}
+			@if(Product != null)
+			{
+				<SearchProductResult Product="@Product"></SearchProductResult>
+			}
+		</MudStack>
+	</MudPaper>
+</div>
+
+<MudOverlay AutoClose="false" Visible="@_loading" DarkBackground>
+	<MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
+</MudOverlay>
+@code {
+
+	private bool _scanEnabled = false;
+	private bool _loading = false;
+	private bool _disableButton = false;
+	private Product? Product = null;
+
+	private void StartScan()
+	{
+		_disableButton = true;
+		_scanEnabled = true;
+		StateHasChanged();
+	}
+
+	private string LocalBarcodeText = "";
+
+	private async Task LocalReceivedBarcodeText(BarcodeReceivedEventArgs args)
+	{
+		_loading = true;
+		_scanEnabled = false;
+		StateHasChanged();
+		Product = await Foodservice.GetProductByBarcode(args.BarcodeText);
+		_loading = false;
+		_disableButton = false;
+		if(Product == null)
+		{
+			Snackbar.Add("Product not found. Please add it manually.", Severity.Error);
+		}
+		StateHasChanged();
+	}
+
+}
