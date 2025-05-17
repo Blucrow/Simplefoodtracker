@@ -7,7 +7,7 @@
     <base href="/Simplefoodtracker/">
     <link rel="stylesheet" href="css/app.css" />
     <!--<link href="Blucrow.Foodtracker.styles.css" rel="stylesheet" />-->
-    <!--<link href="manifest.webmanifest" rel="manifest" />-->
+    <link href="manifest.webmanifest" rel="manifest" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
     <HeadOutlet @rendermode="InteractiveWebAssembly" />
@@ -28,6 +28,8 @@
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/ZXingBlazor/lib/zxing/zxing.min.js"></script>
     <script src="js/IndexedDbStorageAccessor.js"></script>
+    <script src="_content/BlazorBarcodeScanner.ZXing.JS/zxingjs.index.min.js"></script>
+    <script src="_content/BlazorBarcodeScanner.ZXing.JS/BlazorBarcodeScanner.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 
