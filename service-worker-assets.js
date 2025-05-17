@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "A8UdQU31",
+  "version": "n1+el4ja",
   "assets": [
     {
       "hash": "sha256-zDIFn/eIEUdBbTZ2+2BEOxzHiuj3PbWTvzv0TfhCU2I=",
@@ -30,8 +30,8 @@ self.assetsManifest = {
       "url": "_framework/BlazorBarcodeScanner.ZXing.JS.dcmo31n6lq.wasm"
     },
     {
-      "hash": "sha256-D8g9MrrdJq3OQ8hvIMziMfdL/LZrhamFPfQqnHChJIc=",
-      "url": "_framework/Blucrow.Foodtracker.x0pxvvq9uw.wasm"
+      "hash": "sha256-CoSnpOH11HezBlEhPCRRn/EFRbSTK0gtPH3flst9CQk=",
+      "url": "_framework/Blucrow.Foodtracker.idx4mx8aja.wasm"
     },
     {
       "hash": "sha256-win5XRyDGVx0G5Biz0dn7XWsjLyqqVPQzlW7oN4Zrmg=",
@@ -218,7 +218,7 @@ self.assetsManifest = {
       "url": "_framework/System.ezrw3d5kw2.wasm"
     },
     {
-      "hash": "sha256-EFA/Rqp+g1SLipBKLvirLc3zKLMzpqvrjZGTqinHg8M=",
+      "hash": "sha256-XcN0w3X71UH44n6Cphth61c6T4x7DgFgOyS2LIfWuhU=",
       "url": "_framework/blazor.boot.json"
     },
     {
