@@ -30,7 +30,15 @@
     <script src="js/IndexedDbStorageAccessor.js"></script>
     <script src="_content/BlazorBarcodeScanner.ZXing.JS/zxingjs.index.min.js"></script>
     <script src="_content/BlazorBarcodeScanner.ZXing.JS/BlazorBarcodeScanner.js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js');</script>
+    <!--<script>navigator.serviceWorker.register('service-worker.js');</script>-->
+    <script>navigator.serviceWorker.register('/Simplefoodtracker/wwwroot/service-worker.js', {
+            scope: '/Simplefoodtracker/'
+        }).then(registration => {
+            console.log('Service worker registered with scope:', registration.scope);
+        }).catch(error => {
+            console.error('Service worker registration failed:', error);
+        });</script>
+    
 </body>
 
 </html>
