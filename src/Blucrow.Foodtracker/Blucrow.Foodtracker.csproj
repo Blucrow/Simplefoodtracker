@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorBarcodeScanner.ZXing.JS" Version="1.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.3" PrivateAssets="all" />
-	  <PackageReference Include="MudBlazor" Version="8.6.0" />
+	<PackageReference Include="MudBlazor" Version="8.6.0" />
+	<PackageReference Include="ZXingBlazor" Version="1.1.5" />
 	 
   </ItemGroup>
 
