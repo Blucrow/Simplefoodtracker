@@ -2,7 +2,7 @@
   "name": "Blucrow.Foodtracker",
   "short_name": "Blucrow.Foodtracker",
   "id": "./",
-  "start_url": "./",
+  "start_url": "/Simplefoodtracker/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#03173d",
