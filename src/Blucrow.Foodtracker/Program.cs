@@ -10,5 +10,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddMudServices();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<IndexedDbAccessor>();
+builder.Services.AddScoped(sp => new BasePathHelper { BasePath = builder.HostEnvironment.BaseAddress });
 builder.Services.AddScoped<CustomNavigationService>();
 await builder.Build().RunAsync();

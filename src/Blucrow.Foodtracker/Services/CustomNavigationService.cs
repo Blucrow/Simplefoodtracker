@@ -6,15 +6,16 @@ namespace Blucrow.Foodtracker.Services
     public class CustomNavigationService
     {
         private readonly NavigationManager _navigationManager;
-
-        public CustomNavigationService(NavigationManager navigationManager)
+        private string _basePath;
+        public CustomNavigationService(NavigationManager navigationManager, BasePathHelper basePathHelper)
         {
             _navigationManager = navigationManager;
+            _basePath = basePathHelper.BasePath;
         }
 
         public void NavigateTo(string uri, bool forceLoad = false, bool replace = false)
         {
-            _navigationManager.NavigateTo(uri, forceLoad, replace);
+            _navigationManager.NavigateTo(Path.Combine(_basePath, uri), forceLoad, replace);
         }
 
         // You can also expose other methods from NavigationManager if needed
