@@ -4,8 +4,9 @@
     {
         public string? Brand { get; set; }
         public string? Name { get; set; }
+        public string? Barcode { get; set; }
         public Nutritions? Nutritions { get; set; }
-        public Consumed? Consumed { get; set; }
+        public List<Consumed?>? Consumed { get; set; }
 
         public List<NutritionData> GetNutrionsAsData()
         {

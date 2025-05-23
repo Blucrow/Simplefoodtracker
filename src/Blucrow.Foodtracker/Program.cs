@@ -10,13 +10,5 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddMudServices();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<IndexedDbAccessor>();
-//if (builder.HostEnvironment.IsDevelopment())
-//{
-//    builder.Services.AddScoped(sp => new BasePathHelper { BasePath = builder.HostEnvironment.BaseAddress });
-
-//}
-//else
-//    builder.Services.AddScoped(sp => new BasePathHelper { BasePath = "https://blucrow.github.io/Simplefoodtracker/" });
-builder.Services.AddScoped(sp => new BasePathHelper { BasePath = "" });
 builder.Services.AddScoped<CustomNavigationService>();
 await builder.Build().RunAsync();

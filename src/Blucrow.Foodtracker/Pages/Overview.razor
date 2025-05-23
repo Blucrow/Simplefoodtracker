@@ -30,10 +30,10 @@
 		else
 		{
 			_initialized = true;
-			var consumed = await DbAccess.LoadData<List<ProductsConsumed>>("consumed");
+			var consumed = await DbAccess.LoadData<List<Product>>("consumed");
 			if (consumed == null)
 			{
-				await DbAccess.SaveData<List<ProductsConsumed>>("consumed", new List<ProductsConsumed>());
+				await DbAccess.SaveData<List<Product>>("consumed", new List<Product>());
 			}
 			StateHasChanged();
 		}

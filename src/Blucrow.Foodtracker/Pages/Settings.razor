@@ -1,0 +1,28 @@
+﻿@page "/settings"
+
+<div class="d-flex justify-center align-items-center" style="padding-top:2%">
+	<MudPaper Class="pa-6 ma-2">
+		<MudStack AlignItems="AlignItems.Center" Justify="Justify.Center">
+			<MudText Typo="Typo.h6">Settings</MudText>
+			<MudDivider DividerType="DividerType.FullWidth"/>
+			<MudButton Color="Color.Error" Variant="Variant.Filled" OnClick="@Remove">Remove all Data</MudButton>
+		</MudStack>
+	</MudPaper>
+</div>
+
+@code {
+
+	[Inject]
+	public IndexedDbAccessor DbAccessor { get; set; } = null!;
+
+	[Inject]
+	public CustomNavigationService Nav { get; set; } = null!;
+
+	private async Task Remove()
+	{
+		await DbAccessor.DeleteData("consumed");
+		await DbAccessor.DeleteData("info");
+		Nav.NavigateTo("/");
+
+	}
+}

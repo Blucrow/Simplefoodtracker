@@ -14,14 +14,15 @@
 			<MudText Typo="Typo.body1">or enter Barcode manually</MudText>
 			<MudTextField Variant="Variant.Outlined" T="string" Label="Barcode" InputType="InputType.Number" @bind-Value="@_manualBarcode" Immediate="true"/>
 			<MudButton Variant="Variant.Filled"
-					   FullWidth="true"
-					   Color="Color.Secondary"
-					   EndIcon="@Icons.Material.Filled.Search"
-					   Disabled="@_disableButton"
-					   OnClick="@(async () => await OnBarcodeScanned(_manualBarcode))">Search</MudButton>
+			FullWidth="true"
+			Color="Color.Secondary"
+			EndIcon="@Icons.Material.Filled.Search"
+			Disabled="@_disableButton"
+			OnClick="@(async () => await OnBarcodeScanned(_manualBarcode))">Search</MudButton>
 			@if (_scanEnabled)
 			{
 				<BarcodeScanner OnScanned="@OnBarcodeScanned"/>
+				<MudButton OnClick="@StopScan" Variant="Variant.Outlined" Color="Color.Secondary">Cancel</MudButton>
 			}
 			@if(Product != null)
 			{
@@ -62,19 +63,33 @@
 
 	}
 
+	private void StopScan()
+	{
+		_scanEnabled = false;
+		_loading = false;
+		_disableButton = false;
+		StateHasChanged();
+	}
 
 	public async Task OnBarcodeScanned(string code)
 	{
+		var consumed = await DbAccess.LoadData<List<Product>>("consumed");
+
 		_loading = true;
 		_scanEnabled = false;
 		StateHasChanged();
-		Product = await Foodservice.GetProductByBarcode(code);
+		if (consumed != null && consumed.Any(c => c.Barcode == code))
+			Product = consumed.Single(c => c.Barcode == code);
+		else
+			Product = await Foodservice.GetProductByBarcode(code);
+		
 		_loading = false;
 		_disableButton = false;
 		if(Product == null)
 		{
 			Snackbar.Add("Product not found. Please add it manually or try again", Severity.Error);
 		}
+		Product!.Barcode = code;
 		StateHasChanged();
 	}
 

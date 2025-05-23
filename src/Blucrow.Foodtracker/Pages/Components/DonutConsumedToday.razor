@@ -19,16 +19,16 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var consumed = await DbAccess!.LoadData<List<ProductsConsumed>>("consumed");
+        var consumed = await DbAccess!.LoadData<List<Product>>("consumed");
         _info = await DbAccess!.LoadData<PersonalInfo>("info");
-        var relevant = consumed!.Where(x => x.Date == DateService.Today());
+        var relevant = consumed!.Where(x => x.Consumed!.Any(c => c!.Date == DateService.Today()));
         foreach (var r in relevant)
         {
-            kcal += Convert.ToInt32(r.Product.Consumed!.EnergyKcal);
-            data[0] += Convert.ToDouble(r.Product.Consumed.Proteins);
-            data[1] += Convert.ToDouble(r.Product.Consumed.Sugars);
-            data[2] += Convert.ToDouble(r.Product.Consumed.Carbohydrates);
-            data[3] += Convert.ToDouble(r.Product.Consumed.Fat);
+            kcal += Convert.ToInt32(r.Consumed!.Sum(c => c!.EnergyKcal));
+            data[0] += Math.Round(Convert.ToDouble(r.Consumed!.Sum(c => c!.Proteins)),2);
+            data[1] += Math.Round(Convert.ToDouble(r.Consumed!.Sum(c => c!.Sugars)), 2);
+            data[2] += Math.Round(Convert.ToDouble(r.Consumed!.Sum(c => c!.Carbohydrates)), 2);
+            data[3] += Math.Round(Convert.ToDouble(r.Consumed!.Sum(c => c!.Fat)), 2);
         }
     }
 }

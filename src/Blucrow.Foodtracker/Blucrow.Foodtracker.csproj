@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\icon-192.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\icon-192.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BlazorBarcodeScanner.ZXing.JS" Version="1.0.4" />
     <PackageReference Include="Html5QrcodeBlazor.Wrapper" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.3" />

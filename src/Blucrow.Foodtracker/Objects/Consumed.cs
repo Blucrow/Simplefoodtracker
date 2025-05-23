@@ -2,6 +2,7 @@
 {
     public class Consumed
     {
+        public DateOnly Date { get; set; }
         public float? EnergyKcal { get; set; }
         public float? Carbohydrates { get; set; }
         public float? Fat { get; set; }
