@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "U1MuAUls",
+  "version": "ddHeQAQp",
   "assets": [
     {
       "hash": "sha256-zDIFn/eIEUdBbTZ2+2BEOxzHiuj3PbWTvzv0TfhCU2I=",
@@ -30,8 +30,8 @@ self.assetsManifest = {
       "url": "_framework/BlazorBarcodeScanner.ZXing.JS.dcmo31n6lq.wasm"
     },
     {
-      "hash": "sha256-rLSiLO/NZ2XcGJdPkDg5dVRq+Jln7pwJ+yeV2LQNyTo=",
-      "url": "_framework/Blucrow.Foodtracker.0d844pg71h.wasm"
+      "hash": "sha256-Bw75jZjfsLKfzbdkvGzLD1dHdyN6lkZdr4WDNK4p/0o=",
+      "url": "_framework/Blucrow.Foodtracker.d7v04g1m52.wasm"
     },
     {
       "hash": "sha256-win5XRyDGVx0G5Biz0dn7XWsjLyqqVPQzlW7oN4Zrmg=",
@@ -154,8 +154,8 @@ self.assetsManifest = {
       "url": "_framework/System.Linq.Expressions.0amas49u0o.wasm"
     },
     {
-      "hash": "sha256-LaVJIqwpFZfICu3azU9wJ+Z39QLDk9IG2JRb9oKudVU=",
-      "url": "_framework/System.Linq.zgjdnsd297.wasm"
+      "hash": "sha256-iG/duHGNptUcSL/EScWMH1mGLkMDlaIJQa+ikZkOxSc=",
+      "url": "_framework/System.Linq.wq0351galn.wasm"
     },
     {
       "hash": "sha256-wy2EU9j5x+FTuhiwP8UqFcKkiwVBxA9lq45vLjqQo6w=",
@@ -218,7 +218,7 @@ self.assetsManifest = {
       "url": "_framework/System.ezrw3d5kw2.wasm"
     },
     {
-      "hash": "sha256-fU/8HO+Z9EeutaGbTn8W7fIjec6524llR37LmSerutA=",
+      "hash": "sha256-sQMi9q783VUxT9FWc38Qb+OSpbFOiqcHT3slfawCAjU=",
       "url": "_framework/blazor.boot.json"
     },
     {
