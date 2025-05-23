@@ -24,20 +24,28 @@
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
-		var personalInfo = await DbAccess.LoadData<PersonalInfo>("info");
-		if (personalInfo == null)
-			Nav.NavigateTo("./create");
-		else
+		try
 		{
-			_initialized = true;
-			var consumed = await DbAccess.LoadData<List<Product>>("consumed");
-			if (consumed == null)
+			var personalInfo = await DbAccess.LoadData<PersonalInfo>("info");
+			if (personalInfo == null)
+				Nav.NavigateTo("./create");
+			else
 			{
-				await DbAccess.SaveData<List<Product>>("consumed", new List<Product>());
+				_initialized = true;
+				var consumed = await DbAccess.LoadData<List<Product>>("consumed");
+				if (consumed == null)
+				{
+					await DbAccess.SaveData<List<Product>>("consumed", new List<Product>());
+				}
+				StateHasChanged();
 			}
+		}catch(Exception)
+		{
+			await DbAccess.DeleteData("info");
+			await DbAccess.DeleteData("consumed");
 			StateHasChanged();
 		}
-	
+
 	}
 
 
