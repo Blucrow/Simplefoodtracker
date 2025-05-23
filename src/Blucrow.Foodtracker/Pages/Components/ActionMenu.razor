@@ -2,7 +2,7 @@
 	<MudStack Row AlignItems="AlignItems.Center">
 		<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="@Scan"/>
 		<MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Bookmark" Label="Add Recipe" />
-		<MudFab Color="Color.Tertiary" StartIcon="@Icons.Material.Filled.History" />
+		<MudFab Color="Color.Tertiary" StartIcon="@Icons.Material.Filled.History" OnClick="@History"/>
 	</MudStack>
 </MudPaper>
 
@@ -30,6 +30,11 @@
 	private void Scan()
 	{
 		Nav.NavigateTo("scan");
+	}
+
+	private void History()
+	{
+		Nav.NavigateTo("history");
 	}
 
 	private void Add()

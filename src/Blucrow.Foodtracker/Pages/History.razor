@@ -1,0 +1,22 @@
+﻿@page "/history"
+<div class="d-flex justify-center align-items-center" style="padding-top:2%">
+	<MudStack AlignItems="AlignItems.Center" Justify="Justify.Center">
+		<MudText Typo="Typo.h6">History of Products</MudText>
+		@foreach(var p in ConsumedProducts)
+		{
+			<SearchProductResult Product="p"/>
+		}
+	</MudStack>
+</div>
+@code {
+	[Inject]
+	public IndexedDbAccessor DbAccessor { get; set; } = null!;
+
+	private List<Product> ConsumedProducts = new List<Product>();
+	protected override async Task OnInitializedAsync()
+	{
+		var c = await DbAccessor.LoadData<List<Product>>("consumed");
+		if (c != null)
+			ConsumedProducts = c!.OrderBy(c => c.Consumed!.Max(x => x!.Date)).DistinctBy(y => y.Barcode).ToList();
+	}
+}

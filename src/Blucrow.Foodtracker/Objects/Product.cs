@@ -19,34 +19,38 @@
                 Per100g = Nutritions!.EnergyKcal100g,
                 PerServing = Nutritions!.EnergyKcalServing,
             });
-            data.Add(new NutritionData
-            {
-                NutritionType = "Protein",
-                OverallAmount = Nutritions!.Proteins,
-                Per100g = Nutritions!.Proteins100g,
-                PerServing = Nutritions!.ProteinsServing,
-            });
-            data.Add(new NutritionData
-            {
-                NutritionType = "Carbohydrates",
-                OverallAmount = Nutritions!.Carbohydrates,
-                Per100g = Nutritions!.Carbohydrates100g,
-                PerServing = Nutritions!.CarbohydratesServing,
-            });
-            data.Add(new NutritionData
-            {
-                NutritionType = "Fat",
-                OverallAmount = Nutritions!.Fat,
-                Per100g = Nutritions!.Fat100g,
-                PerServing = Nutritions!.FatServing,
-            });
-            data.Add(new NutritionData
-            {
-                NutritionType = "Sugar",
-                OverallAmount = Nutritions!.Sugars,
-                Per100g = Nutritions!.Sugars100g,
-                PerServing = Nutritions!.SugarsServing,
-            });
+            if (Nutritions!.Proteins != null)
+                data.Add(new NutritionData
+                {
+                    NutritionType = "Protein",
+                    OverallAmount = Nutritions!.Proteins,
+                    Per100g = Nutritions!.Proteins100g,
+                    PerServing = Nutritions!.ProteinsServing,
+                });
+            if (Nutritions!.Carbohydrates != null)
+                data.Add(new NutritionData
+                {
+                    NutritionType = "Carbohydrates",
+                    OverallAmount = Nutritions!.Carbohydrates,
+                    Per100g = Nutritions!.Carbohydrates100g,
+                    PerServing = Nutritions!.CarbohydratesServing,
+                });
+            if (Nutritions!.Fat != null)
+                data.Add(new NutritionData
+                {
+                    NutritionType = "Fat",
+                    OverallAmount = Nutritions!.Fat,
+                    Per100g = Nutritions!.Fat100g,
+                    PerServing = Nutritions!.FatServing,
+                });
+            if (Nutritions!.Sugars != null)
+                data.Add(new NutritionData
+                {
+                    NutritionType = "Sugar",
+                    OverallAmount = Nutritions!.Sugars,
+                    Per100g = Nutritions!.Sugars100g,
+                    PerServing = Nutritions!.SugarsServing,
+                });
 
             return data;
         }

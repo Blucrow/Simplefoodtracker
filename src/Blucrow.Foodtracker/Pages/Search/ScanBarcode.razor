@@ -1,12 +1,10 @@
 ﻿@page "/scan"
 @inject ISnackbar Snackbar
 
-
-
 <div class="d-flex justify-center align-items-center" style="padding-top:2%">
 	<MudPaper MaxWidth="600px">
 		<MudStack Spacing="2" AlignItems="AlignItems.Center" Justify="Justify.Center">
-			<MudButton FullWidth="true" Variant="Variant.Filled"
+			<MudButton Variant="Variant.Filled"
 			Color="Color.Secondary"
 			EndIcon="@Icons.Material.Filled.Scanner"
 			Disabled="@_disableButton"
@@ -14,7 +12,6 @@
 			<MudText Typo="Typo.body1">or enter Barcode manually</MudText>
 			<MudTextField Variant="Variant.Outlined" T="string" Label="Barcode" InputType="InputType.Number" @bind-Value="@_manualBarcode" Immediate="true"/>
 			<MudButton Variant="Variant.Filled"
-			FullWidth="true"
 			Color="Color.Secondary"
 			EndIcon="@Icons.Material.Filled.Search"
 			Disabled="@_disableButton"

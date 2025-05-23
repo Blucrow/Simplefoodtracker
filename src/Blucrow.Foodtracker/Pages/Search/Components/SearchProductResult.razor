@@ -2,7 +2,7 @@
 	<MudCardHeader>
 		<CardHeaderContent>
 			<MudText Typo="Typo.h6">@Product.Name</MudText>
-			<MudTextField T="float" Adornment="Adornment.End" AdornmentText="g" InputType="InputType.Number" Label="grams" @bind-Value="@_grams" Immediate="true" />
+			<MudTextField T="float" Adornment="Adornment.End" AdornmentText="g" InputType="InputType.Number" Label="grams / ml" @bind-Value="@_grams" Immediate="true" />
 		</CardHeaderContent>
 	</MudCardHeader>
 	<MudCardContent>
@@ -36,22 +36,36 @@
 
 	private float _grams = 100;
 
+	protected override void OnInitialized()
+	{
+		if(Product.Consumed != null)
+		{
+			_grams = (float)Product.Consumed.MaxBy(c => c!.Date!)!.Grams!;
+		}
+	}
+
 	private async Task AddItem()
 	{
 		if (Product.Consumed == null)
 			Product.Consumed = new List<Consumed>()!;
-		Product.Consumed.Add(new Consumed
-		{
+		var consume = new Consumed
+			{
 				Carbohydrates = Product.Nutritions!.Carbohydrates100g * (_grams / (float)100),
-				EnergyKcal = Product.Nutritions!.EnergyKcal100g * (_grams / (float)100),
-				Sugars = Product.Nutritions!.Sugars100g * (_grams / (float)100),
-				Fat = Product.Nutritions!.Fat * (_grams / (float)100),
-				Proteins = Product.Nutritions!.Carbohydrates100g * (_grams / (float)100),
+				EnergyKcal = Product.Nutritions?.EnergyKcal100g * (_grams / (float)100),
+				Sugars = Product.Nutritions?.Sugars100g * (_grams / (float)100),
+				Fat = Product.Nutritions?.Fat * (_grams / (float)100),
+				Proteins = Product.Nutritions?.Carbohydrates100g * (_grams / (float)100),
 				Grams = _grams,
 				Date = DateService.Today()
-		});
+			};
+		Product.Consumed.Add(consume);
 		var consumed = await DbAccess.LoadData<List<Product>>("consumed");
-		consumed!.Add(Product);
+		var c = consumed!.SingleOrDefault(x => x.Barcode == Product.Barcode);
+		if(c != null)
+		{
+			c.Consumed!.Add(consume);
+		}else
+			consumed!.Add(Product);
 		await DbAccess.SaveData("consumed",consumed);
 		Snackbar.Add("Product added", Severity.Success);
 	}
