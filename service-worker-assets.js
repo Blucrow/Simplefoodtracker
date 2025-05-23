@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "xdvQaZjY",
+  "version": "8i8DeN7O",
   "assets": [
     {
       "hash": "sha256-zDIFn/eIEUdBbTZ2+2BEOxzHiuj3PbWTvzv0TfhCU2I=",
@@ -30,8 +30,8 @@ self.assetsManifest = {
       "url": "_framework/BlazorBarcodeScanner.ZXing.JS.dcmo31n6lq.wasm"
     },
     {
-      "hash": "sha256-NuIFZGG586AoMjtKPZHzDsLdLw3l50MEJZI01b6dql0=",
-      "url": "_framework/Blucrow.Foodtracker.64envzdawp.wasm"
+      "hash": "sha256-hBIiNuWT0/pAmwoaFb7u8OJRFMwvHYJHy1tB7nXr8Hk=",
+      "url": "_framework/Blucrow.Foodtracker.w5nhnvv97d.wasm"
     },
     {
       "hash": "sha256-win5XRyDGVx0G5Biz0dn7XWsjLyqqVPQzlW7oN4Zrmg=",
@@ -154,8 +154,8 @@ self.assetsManifest = {
       "url": "_framework/System.Linq.Expressions.0amas49u0o.wasm"
     },
     {
-      "hash": "sha256-Ki01ebiBVwKqkZaiIOs22NmG8Y7D3QgIR9rmXgAXdS8=",
-      "url": "_framework/System.Linq.q3lkjyn0xc.wasm"
+      "hash": "sha256-LaVJIqwpFZfICu3azU9wJ+Z39QLDk9IG2JRb9oKudVU=",
+      "url": "_framework/System.Linq.zgjdnsd297.wasm"
     },
     {
       "hash": "sha256-wy2EU9j5x+FTuhiwP8UqFcKkiwVBxA9lq45vLjqQo6w=",
@@ -218,7 +218,7 @@ self.assetsManifest = {
       "url": "_framework/System.ezrw3d5kw2.wasm"
     },
     {
-      "hash": "sha256-8NGB1N33osSMFEM5kLgm1OcS/rSxWQoIvU6YzeJkRos=",
+      "hash": "sha256-mIVSt0FsFXew5ROE/Uy+pjui+xpuJgK6MHPpXYy7GuE=",
       "url": "_framework/blazor.boot.json"
     },
     {
@@ -258,15 +258,15 @@ self.assetsManifest = {
       "url": "css/app.css"
     },
     {
-      "hash": "sha256-DbpQaq68ZSb5IoPosBErM1QWBfsbTxpJqhU0REi6wP4=",
-      "url": "icon-192.png"
+      "hash": "sha256-RGCDeZths7YLwA3IVSZFKlETCdXVPNnBJuhRD6Ho3y0=",
+      "url": "favicon.ico"
     },
     {
-      "hash": "sha256-oEo6d+KqX5fjxTiZk/w9NB3Mi0+ycS5yLwCKwr4IkbA=",
+      "hash": "sha256-v8F8l0/OF3I1isWz62DA61HKDovnIDUBNAFDbY7Ipeg=",
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-aAGzLEwTqO8klkTOGBFBT89mVS8cWlNWZHDU1dbF1as=",
+      "hash": "sha256-1Po3iXCG1rCazAMxS7xVNvfgrnDHdijQ0wx666BOptc=",
       "url": "index.html"
     },
     {
