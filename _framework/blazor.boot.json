@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Blucrow.Foodtracker",
   "resources": {
-    "hash": "sha256-RZ09dFX0+aR3gRwbC5pDx4HprRP1qNqUg2kx9Cqk/3U=",
+    "hash": "sha256-kikWjzJCaavs2qMJisww0huOXSUYkCY70e7g3/GLNr4=",
     "fingerprinting": {
       "BlazorBarcodeScanner.ZXing.JS.dcmo31n6lq.wasm": "BlazorBarcodeScanner.ZXing.JS.wasm",
       "Html5QrcodeBlazor.Wrapper.i4ycywh4rc.wasm": "Html5QrcodeBlazor.Wrapper.wasm",
@@ -49,8 +49,8 @@
       "System.Threading.1zdcxdxxda.wasm": "System.Threading.wasm",
       "System.Web.HttpUtility.zxgxju611c.wasm": "System.Web.HttpUtility.wasm",
       "System.ezrw3d5kw2.wasm": "System.wasm",
-      "System.Private.CoreLib.76uc5otfw8.wasm": "System.Private.CoreLib.wasm",
-      "Blucrow.Foodtracker.d7v04g1m52.wasm": "Blucrow.Foodtracker.wasm",
+      "System.Private.CoreLib.49g0penony.wasm": "System.Private.CoreLib.wasm",
+      "Blucrow.Foodtracker.v2fw5yleco.wasm": "Blucrow.Foodtracker.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.native.uhsveqo9bs.js": "dotnet.native.js",
       "dotnet.native.swgexbmoy7.wasm": "dotnet.native.wasm",
@@ -75,7 +75,7 @@
     },
     "coreAssembly": {
       "System.Runtime.InteropServices.JavaScript.5pcrya9j00.wasm": "sha256-92zUoi9qwW2rZalWHIYTUNdUv+uUJLg6ZLS4Aj0eqHk=",
-      "System.Private.CoreLib.76uc5otfw8.wasm": "sha256-QcccdxveY/f7H5i6tUDzTW59Md45UyVw2fl88WA8b+o="
+      "System.Private.CoreLib.49g0penony.wasm": "sha256-uIzqhaPIPRz8/OnzKKJe8E4kCYdHF/El0fhPlHn0tKY="
     },
     "assembly": {
       "BlazorBarcodeScanner.ZXing.JS.dcmo31n6lq.wasm": "sha256-Hf613vqCTtAv3lf6Yh54NC3Y2a7dCZalU+4mXDfZeuU=",
@@ -123,7 +123,7 @@
       "System.Threading.1zdcxdxxda.wasm": "sha256-vTZNFSZOWDwpEr2E67SJDUQKO29mWQqVcR0XWYnj3ZQ=",
       "System.Web.HttpUtility.zxgxju611c.wasm": "sha256-+WAYv+toll+1VB+R+I8jZI4oluamkvX5kU9mMiNftN8=",
       "System.ezrw3d5kw2.wasm": "sha256-ViNRvhyxlTugIlqJHamw/HwbXlg/YWcrANmxuTM0tfg=",
-      "Blucrow.Foodtracker.d7v04g1m52.wasm": "sha256-Bw75jZjfsLKfzbdkvGzLD1dHdyN6lkZdr4WDNK4p/0o="
+      "Blucrow.Foodtracker.v2fw5yleco.wasm": "sha256-qS6vOapX+hvh+KPgrNpGI3668Tw/68f5OqchXJQa9Wg="
     }
   },
   "cacheBootResources": true,
