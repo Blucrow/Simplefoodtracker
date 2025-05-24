@@ -11,7 +11,7 @@
 				<PropertyColumn Property="x => x.NutritionType" Title="Nutrition" />
 				<TemplateColumn>
 					<CellTemplate>
-						@((context.Item.Per100g * (_grams / (float)100))!.Value.ToString("n1"))
+						@(Math.Round(Convert.ToDouble(context.Item.Per100g * (_grams / (float)100)),2))
 					</CellTemplate>
 				</TemplateColumn>
 			</Columns>
@@ -54,7 +54,7 @@
 				EnergyKcal = Product.Nutritions?.EnergyKcal100g * (_grams / (float)100),
 				Sugars = Product.Nutritions?.Sugars100g * (_grams / (float)100),
 				Fat = Product.Nutritions?.Fat * (_grams / (float)100),
-				Proteins = Product.Nutritions?.Carbohydrates100g * (_grams / (float)100),
+				Proteins = Product.Nutritions?.Proteins100g * (_grams / (float)100),
 				Grams = _grams,
 				Date = DateService.Today()
 			};
