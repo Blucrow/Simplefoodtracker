@@ -20,8 +20,6 @@
 			<div id="qr-reader" style="width: 300px;"></div>
 			@if (_scanEnabled)
 			{
-				
-				@* <BarcodeScanner OnScanned="@OnBarcodeScanned"/> *@
 				<MudButton OnClick="@StopScan" Variant="Variant.Outlined" Color="Color.Secondary">Cancel</MudButton>
 			}
 			@if(Product != null)
@@ -94,8 +92,8 @@
 		if(Product == null)
 		{
 			Snackbar.Add("Product not found. Please add it manually or try again", Severity.Error);
-		}
-		Product!.Barcode = code;
+		}else
+			Product!.Barcode = code;
 		StateHasChanged();
 	}
 
