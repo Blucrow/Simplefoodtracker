@@ -1,5 +1,6 @@
 ﻿@page "/scan"
 @inject ISnackbar Snackbar
+@inject IJSRuntime JS
 
 <div class="d-flex justify-center align-items-center" style="padding-top:2%">
 	<MudPaper MaxWidth="600px">
@@ -16,9 +17,11 @@
 			EndIcon="@Icons.Material.Filled.Search"
 			Disabled="@_disableButton"
 			OnClick="@(async () => await OnBarcodeScanned(_manualBarcode))">Search</MudButton>
+			<div id="qr-reader" style="width: 300px;"></div>
 			@if (_scanEnabled)
 			{
-				<BarcodeScanner OnScanned="@OnBarcodeScanned"/>
+				
+				@* <BarcodeScanner OnScanned="@OnBarcodeScanned"/> *@
 				<MudButton OnClick="@StopScan" Variant="Variant.Outlined" Color="Color.Secondary">Cancel</MudButton>
 			}
 			@if(Product != null)
@@ -45,6 +48,8 @@
 	private Product? Product = null;
 	private string _manualBarcode = "";
 
+	private DotNetObjectReference<ScanBarcode>? _dotNetRef;
+
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
 		var personalInfo = await DbAccess.LoadData<PersonalInfo>("info");
@@ -52,26 +57,30 @@
 			Nav.NavigateTo("./create");
 	}
 
-	private void StartScan()
+	private async Task StartScan()
 	{
 		_disableButton = true;
 		_scanEnabled = true;
 		StateHasChanged();
-
+		_dotNetRef = DotNetObjectReference.Create(this);
+		await JS.InvokeVoidAsync("qrScannerInterop.startScanner", "qr-reader", _dotNetRef);
 	}
 
-	private void StopScan()
+	private async Task StopScan()
 	{
 		_scanEnabled = false;
 		_loading = false;
 		_disableButton = false;
+		await JS.InvokeVoidAsync("qrScannerInterop.stopScanner");
 		StateHasChanged();
+		
 	}
 
+	[JSInvokable]
 	public async Task OnBarcodeScanned(string code)
 	{
+		await JS.InvokeVoidAsync("qrScannerInterop.stopScanner");
 		var consumed = await DbAccess.LoadData<List<Product>>("consumed");
-
 		_loading = true;
 		_scanEnabled = false;
 		StateHasChanged();
