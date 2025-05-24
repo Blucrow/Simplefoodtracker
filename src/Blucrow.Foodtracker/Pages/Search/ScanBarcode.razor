@@ -11,7 +11,7 @@
 			Disabled="@_disableButton"
 			OnClick="@StartScan">Scan Barcode</MudButton>
 			<MudText Typo="Typo.body1">or enter Barcode manually</MudText>
-			<MudTextField Variant="Variant.Outlined" T="string" Label="Barcode" InputType="InputType.Number" @bind-Value="@_manualBarcode" Immediate="true"/>
+			<MudTextField Variant="Variant.Outlined" T="string" Label="Barcode" InputType="InputType.Number" @bind-Value="@_manualBarcode" Immediate="true" />
 			<MudButton Variant="Variant.Filled"
 			Color="Color.Secondary"
 			EndIcon="@Icons.Material.Filled.Search"
@@ -22,7 +22,7 @@
 			{
 				<MudButton OnClick="@StopScan" Variant="Variant.Outlined" Color="Color.Secondary">Cancel</MudButton>
 			}
-			@if(Product != null)
+			@if (Product != null)
 			{
 				<SearchProductResult Product="@Product"></SearchProductResult>
 			}
@@ -71,12 +71,13 @@
 		_disableButton = false;
 		await JS.InvokeVoidAsync("qrScannerInterop.stopScanner");
 		StateHasChanged();
-		
+
 	}
 
 	[JSInvokable]
 	public async Task OnBarcodeScanned(string code)
 	{
+		if (string.IsNullOrEmpty(code)) return;
 		await JS.InvokeVoidAsync("qrScannerInterop.stopScanner");
 		var consumed = await DbAccess.LoadData<List<Product>>("consumed");
 		_loading = true;
@@ -86,13 +87,14 @@
 			Product = consumed.Single(c => c.Barcode == code);
 		else
 			Product = await Foodservice.GetProductByBarcode(code);
-		
+
 		_loading = false;
 		_disableButton = false;
-		if(Product == null)
+		if (Product == null)
 		{
 			Snackbar.Add("Product not found. Please add it manually or try again", Severity.Error);
-		}else
+		}
+		else
 			Product!.Barcode = code;
 		StateHasChanged();
 	}
